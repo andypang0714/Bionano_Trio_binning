@@ -15,7 +15,7 @@ pyYAML==5.3.1\
 snakemake==5.26.1\
 r==3.4.3\
 r-optparse=1.6.6\
-snakeparse==0.1.0-py_2\
+snakeparse==0.1.0-py_2
 
 ## Example Run:
 Generate the temp_config.yaml:\
