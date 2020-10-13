@@ -28,4 +28,4 @@ Bionano_Trio_binning$ screen -L snakemake --jobs
 python make_config.py -h
 
 ## Result
-The final binned molecules are in '<your ouput folder>'/mol_align_to_\*/alignmolvref/mol_align_to_\*_postbinning.bnx. The metrics for the binning is in the Summary section (at the buttom) in '<your ouput folder>'/trio_binning_summary.txt 
+The final binned molecules are in `<your ouput folder>`/mol_align_to_\*/alignmolvref/mol_align_to_\*_postbinning.bnx. The metrics for the binning is in the Summary section (at the buttom) in `<your ouput folder>`/trio_binning_summary.txt 
