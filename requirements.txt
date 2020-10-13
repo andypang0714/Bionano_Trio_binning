@@ -1,0 +1,7 @@
+python==3.7.3
+pyYAML==5.3.1
+r==3.4.3
+snakemake==5.26.1
+r-optparse=
+snakeparse==0.1.0-py_2
+Assumed at least 96 threads
