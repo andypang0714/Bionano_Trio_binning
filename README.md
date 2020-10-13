@@ -5,7 +5,6 @@ This project is for trio-binning Bionano molecules. Proband molecules are aligne
 
 ## Requirements
 RefAligner - downloaded from Bionano Genomics software download page (Bionano Tools in https://bionanogenomics.com/support/software-downloads/).  
-Assumed at least 96 threads in compute resource but can be adjusted.\
 Run has to be launched from the directory of make_config.py.\
 Currently only 1 run can be done per time. 
 
