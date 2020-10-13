@@ -1,0 +1,8 @@
+_author__ = 'jlee'
+import os
+#pip install rpy2==2.3.0
+
+from rpy2.robjects.packages import importr
+import rpy2.robjects as ro
+
+Rscript ./Scripts/trio_binning_20190726_rscript.R
