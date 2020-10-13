@@ -1,4 +1,4 @@
-###e.g. JLwrittenscripts/trio_binning$ python command.py -na father -nb mother -f father_EXP_REFINEFINAL1.cmap -m mother_EXP_REFINEFINAL1.cmap -b Proband_mol_folder/Proband_all.bnx -o Proband_mol_folder -RefAligner path/to/RefAligner
+###e.g. Bionano_Trio_binning$ python make_config.py -na father -nb mother -f father_EXP_REFINEFINAL1.cmap -m mother_EXP_REFINEFINAL1.cmap -b Proband_mol_folder/Proband_all.bnx -o Proband_mol_folder -RefAligner path/to/RefAligner
 import argparse
 import os.path
 import snakemake
