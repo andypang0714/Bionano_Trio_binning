@@ -27,4 +27,7 @@ Bionano_Trio_binning$ screen -L snakemake --jobs
 python make_config.py -h
 
 ## Result
-The final binned molecules are in `<your ouput folder>`/mol_align_to_\*/alignmolvref/mol_align_to_\*_postbinning.bnx. The metrics for the binning is in the Summary section (at the buttom) in `<your ouput folder>`/trio_binning_summary.txt 
+The final binned molecules are in `<your output folder>`/mol_align_to_\*/alignmolvref/mol_align_to_\*_postbinning.bnx. The metrics for the binning is in the Summary section (at the buttom) in `<your output folder>`/trio_binning_summary.txt 
+
+## Cross checking
+The cross checking step is optional and can be performed manually before a second round of trio-binning. It further separates the parental alleles by aligning the binned assemblies (provided as inputs) to the parents assemblies and identifies regions where it is homozygous in one parent and heterozygous in the other, and eliminates the shared allele (by cutting up the contig) from the binned assembly that has the extra allele. The cross checked binned assemblies can then be used as anchors for the next round of trio-binning.   
