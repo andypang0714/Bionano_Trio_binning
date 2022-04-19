@@ -1,22 +1,19 @@
 #!/usr/bin/env Rscript
 library("optparse")
-source("/home/users/elam/rscripts/paste0.R")
-source("/home/users/jlee/JLwrittenscripts/get_header.R")
-source("~/JLwrittenscripts/get_corresponding_qrymap_coordinate.R")
+source("./Optional_cross_checking_scripts/get_header.R")
+source("./Optional_cross_checking_scripts/get_corresponding_qrymap_coordinate.R")
 
-#ftfpath<-"/home/users7/jlee/data/Rockefeller_Homo_sapiens_20190826/father/Father_selected_nonhap_ES_sdb_20190830_cloud/father_selected_nonhap_GM_to_father_ori_GM_xmapUnique0_IndelNoOverlap0//exp_refineFinal1_sv/merged_smaps/exp_refineFinal1_merged_filter_inversions.smap"
-#ftfxmap<-"/home/users7/jlee/data/Rockefeller_Homo_sapiens_20190826/father/Father_selected_nonhap_ES_sdb_20190830_cloud/father_selected_nonhap_GM_to_father_ori_GM_xmapUnique0_IndelNoOverlap0//exp_refineFinal1_sv/merged_smaps/exp_refineFinal1_merged.xmap"
-#ftfrmap<-"/home/users7/jlee/data/Rockefeller_Homo_sapiens_20190826/father/Father_selected_nonhap_ES_sdb_20190830_cloud/father_selected_nonhap_GM_to_father_ori_GM_xmapUnique0_IndelNoOverlap0//exp_refineFinal1_sv/merged_smaps/exp_refineFinal1_merged_r.cmap"
-#ftfqmap<-"/home/users7/jlee/data/Rockefeller_Homo_sapiens_20190826/father/Father_selected_nonhap_ES_sdb_20190830_cloud/father_selected_nonhap_GM_to_father_ori_GM_xmapUnique0_IndelNoOverlap0//exp_refineFinal1_sv/merged_smaps/exp_refineFinal1_merged_q.cmap"
-#mtfpath<-"/home/users7/jlee/data/Rockefeller_Homo_sapiens_20190826/mother/Mother_selected_nonhap_ES_sdb_20190830_cloud/mother_selected_nonhap_GM_to_father_ori_GM_xmapUnique0_IndelNoOverlap0//exp_refineFinal1_sv/merged_smaps/exp_refineFinal1_merged_filter_inversions.smap"
-#mtfxmap<-"/home/users7/jlee/data/Rockefeller_Homo_sapiens_20190826/mother/Mother_selected_nonhap_ES_sdb_20190830_cloud/mother_selected_nonhap_GM_to_father_ori_GM_xmapUnique0_IndelNoOverlap0//exp_refineFinal1_sv/merged_smaps/exp_refineFinal1_merged.xmap"
-#outputfile<-"/home/users7/jlee/data/Rockefeller_Homo_sapiens_20190826/father/Father_selected_nonhap_ES_sdb_20190830_cloud/father_selected_nonhap_GM_to_father_ori_GM_xmapUnique0_IndelNoOverlap0/cross_check_i1_result.txt"
+#ftfpath<-"~/father_selected_nonhap_GM_to_father_ori_GM_xmapUnique0_IndelNoOverlap0//exp_refineFinal1_sv/merged_smaps/exp_refineFinal1_merged_filter_inversions.smap"
+#ftfxmap<-"~/father_selected_nonhap_GM_to_father_ori_GM_xmapUnique0_IndelNoOverlap0//exp_refineFinal1_sv/merged_smaps/exp_refineFinal1_merged.xmap"
+#ftfrmap<-"~/father_selected_nonhap_GM_to_father_ori_GM_xmapUnique0_IndelNoOverlap0//exp_refineFinal1_sv/merged_smaps/exp_refineFinal1_merged_r.cmap"
+#ftfqmap<-"~/father_selected_nonhap_GM_to_father_ori_GM_xmapUnique0_IndelNoOverlap0//exp_refineFinal1_sv/merged_smaps/exp_refineFinal1_merged_q.cmap"
+#mtfpath<-"~/mother_selected_nonhap_GM_to_father_ori_GM_xmapUnique0_IndelNoOverlap0//exp_refineFinal1_sv/merged_smaps/exp_refineFinal1_merged_filter_inversions.smap"
+#mtfxmap<-"~/mother_selected_nonhap_GM_to_father_ori_GM_xmapUnique0_IndelNoOverlap0//exp_refineFinal1_sv/merged_smaps/exp_refineFinal1_merged.xmap"
+#outputfile<-"~/father_selected_nonhap_GM_to_father_ori_GM_xmapUnique0_IndelNoOverlap0/cross_check_i1_result.txt"
 #sizethres<-2000
 #buffer<-10000
 #types<-c("insertion", "deletion")
-###zygosity, size filter at the mtf. indels only. Duplication may come later
-###Not including indels that involve more than 1 match group e.g. those XmapID1 != XmapID2)
-###What if mom has a large indels too that involves 2 matchgroups?
+###zygosity, size filter at the mtf. indels only. Not including indels that involve more than 1 match group e.g. those XmapID1 != XmapID2)
 
 parser <- OptionParser()
 parser <- add_option(parser, c("-f", "--ftfpath"), help="Parent1 allele smap for against Parent1 original")
@@ -44,6 +41,8 @@ sizethres<-args$sizethres
 buffer<-args$buffer
 #types<-args$types
 types<-c("insertion", "deletion")
+
+paste0 <- function(...) { paste(...,sep="") }
 
 cross_checking<-function(ftfpath, ftfxmap, ftfrmap, ftfqmap, mtfpath, mtfxmap, outputfile, sizethres, buffer, types){
 ftf<-readtable(ftfpath)
@@ -223,10 +222,7 @@ print(check[check$Freq>1,])   ###These are usually involving end of one of the q
 }
 
 cross_checking(ftfpath, ftfxmap, ftfrmap, ftfqmap, mtfpath, mtfxmap, outputfile, sizethres, buffer, types)
- ##loop number of SV per anchor
- ###Loop number of ref with SV
 
-###Cut at the query labelIDs but on the original query map instead of the q.cmap (Check # of labels to make sure they are the same between the input query and the q.cmap)
 
 
 
